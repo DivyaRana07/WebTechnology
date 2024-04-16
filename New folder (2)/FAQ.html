@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to left, #ffffff, #f0f1f1);
+        }
+
+        header {
+            margin: 1.5rem;
+            background-color: white;
+            border: 1px solid #cfcfcf;
+            border-radius: 25px;
+            box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09), 0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09), 0 32px 16px rgba(0, 0, 0, 0.09);
+            color: black;
+            padding: 2px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        nav img {
+            max-height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav li a {
+            color: #5d0c94;
+            margin: 0 15px 0 15px;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 20px;
+            padding: 10px;
+            transition: all 0.2s linear;
+        }
+
+        nav li a:hover {
+            cursor: pointer;
+            color: rgb(253, 253, 253);
+            background: #5d0c94;
+        }
+
+        section {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            max-width: 100%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            text-align: center;
+        }
+        .logo{
+            margin-left: 2rem;
+            display: flex  ;
+            justify-content: center;
+            align-items: center;
+        }
+        .faq-item {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .faq-item h3 {
+            margin-top: 0;
+        }
+
+        .faq-form {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .faq-form input[type="text"],.faq-form input[type="email"],
+        .faq-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .faq-form input[type="submit"] {
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .faq-form input[type="submit"]:hover {
+            background-color: #40005d;
+        }
+        .contact{
+            margin-right: 104rem;
+            font-size: 15px;
+        }
+
+        footer {
+            background-color: #2f184b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html">
+            <div class="logo">
+                <img src="https://th.bing.com/th?id=ODLS.7b56eff7-2e36-4afe-b129-6be999a41335&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" alt="Logo">
+                <h3>E-Commerce Website</h3>
+            </div>
+        </a>
+        <ul>
+            <li><a href="#">FAQ?</a></li>
+            <li><a href="#">Your orders</a></li>
+            <li><a href="cart.html">My Cart</a></li>
+            <li><a href="#">Services</a></li>
+            <!-- <li><a href="#">Documentation</a></li> -->
+        </ul>
+    </nav>
+</header>
+
+<section id="faq">
+    <!-- Existing FAQ items -->
+    <div class="faq-item">
+        <h3>How can I track my order?</h3>
+        <p>You can track your order by visiting the "Your Orders" section and entering your order details.</p>
+    </div>
+    <div class="faq-item">
+        <h3>What payment methods do you accept?</h3>
+        <p>We accept all major credit and debit cards, as well as PayPal.</p>
+    </div>
+    <div class="faq-item">
+        <h3>How do I return an item?</h3>
+        <p>To return an item, please contact our customer service team within 30 days of receiving your order.</p>
+    </div>
+
+    <!-- Form for adding customer questions -->
+    <form class="faq-form">
+        <h3>For other Queries?</h3>
+        <input type="text" id="question-name" name="question-name" placeholder="Your Name" required>
+        <input type="email" id="question-email" name="question-email" placeholder="Your Email" required>
+        <textarea id="question" name="question" rows="4" placeholder="Your Question" required></textarea>
+        <input type="submit" value="Submit Question">
+    </form>
+</section>
+
+<footer>
+    <p class="contact">For further queries:</p>
+    <p class="contact">Contact: 9873849828</p>
+    <p>&copy;2024 Rights are Reserved</p>
+</footer>
+<!-- Your existing HTML code... -->
+
+</body>
+</html>

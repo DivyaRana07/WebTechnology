@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to left, #ffffff, #f0f1f1);
+        }
+
+        header {
+            margin: 1.5rem;
+            background-color: white;
+            border: 1px solid #cfcfcf;
+            border-radius: 25px;
+            box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09), 0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09), 0 32px 16px rgba(0, 0, 0, 0.09);
+            color: black;
+            padding: 2px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        nav img {
+            max-height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav li a {
+            color: #5d0c94;
+            margin: 0 15px 0 15px;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 20px;
+            padding: 10px;
+            transition: all 0.2s linear;
+        }
+
+        nav li a:hover {
+            cursor: pointer;
+            color: rgb(253, 253, 253);
+            background: #5d0c94;
+        }
+
+        section {
+            margin: 220px;
+        }
+
+        .autoSlider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-direction: column;
+        }
+
+        .top {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .arrow-right,
+        .arrow-left {
+            height: 150px;
+            cursor: pointer;
+        }
+
+        .arrow-right {
+            transform: rotate(180deg);
+        }
+
+        .frame {
+            width: 736px;
+            height: 736px;
+            overflow: hidden;
+            box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .slider {
+            display: flex;
+            transition: all 1s ease;
+        }
+
+        .bottom {
+            display: flex;
+            gap: 30px;
+        }
+
+        .button {
+            width: 15px;
+            height: 15px;
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .products {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            max-width: 100%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            text-align: center;
+        }
+
+        .add-to-cart-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            /* display:none; */
+        }
+
+        .plus-btn,
+        .minus-btn {
+            /* display: none; */
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .plus-btn {
+            right: 60px;
+        }
+
+        .productqty {
+            position: absolute;
+            bottom: 10px;
+            right: 45px;
+            /* text-align: center; */
+            /* padding-left: 25px; */
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #40005d;
+        }
+
+        .logo {
+            margin-left: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .product-item {
+            position: relative;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+        }
+
+        .product-item h2 {
+            margin-top: 0;
+        }
+
+        .img {
+            height: 300px;
+            width: 300px;
+            border-radius: 20px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: "Lucida Console", "Courier New", monospace;
+            font-weight: bold;
+            font-size: 50px;
+            font-style: oblique;
+        }
+
+        .Category-item {
+            /* border: 2px black solid; */
+            padding: 25px;
+            text-align: center;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+
+        footer {
+            background-color: #2f184b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="#">
+                <div class="logo">
+                    <img src="https://th.bing.com/th?id=ODLS.7b56eff7-2e36-4afe-b129-6be999a41335&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
+                        alt="Logo">
+                    <h3>E-Commerce Website</h3>
+                </div>
+            </a>
+            <ul>
+                <li><a href="FAQ.html">FAQ?</a></li>
+                <li><a href="#">Your orders</a></li>
+                <li><a href="cart.html">My Cart</a></li>
+                <li><a href="#">Services</a></li>
+                <!-- <li><a href="#">Documentation</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <section class="autoSlider">
+        <div class="container">
+            <div class="top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 24 24"
+                    class="arrow-left">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        d="m14 7l-5 5l5 5" />
+                </svg>
+                <div class="frame">
+                    <div class="slider">
+                        <img src="4.jpeg" alt="4" class="image">
+                        <img src="5.jpeg" alt="5" class="image">
+                        <img src="6.jpeg" alt="6" class="image">
+                        <img src="7.jpeg" alt="7" class="image">
+                        <img src="8.jpeg" alt="8" class="image">
+                    </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 24 24"
+                    class="arrow-right">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        d="m14 7l-5 5l5 5" />
+                </svg>
+            </div>
+            <div class="bottom">
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <h1>Category</h1>
+        <div class="flex-container">
+            <a href="Men'scategory.html">
+                <!--Category 1-->
+                <div class="Category-item">
+                    <img src="cm.jpeg" alt="Men's Category" class="img">
+                    <p>Men's Wear</p>
+                </div>
+            </a>
+
+            <a href="women'scategory.html">
+                <!--Category 2-->
+                <div class="Category-item">
+                    <img src="cw.jpeg" alt="Women's Wear" class="img">
+                    <p>Women's Wear</p>
+                </div>
+            </a>
+
+            <a href="kidscategory.html"><!--Category 3-->
+                <div class="Category-item">
+                    <img src="ck.jpeg" alt="Kid's Wear" class="img">
+                    <p>Kid's Wear</p>
+                </div>
+            </a>
+
+            <a href="Homecare.html">
+                <!--Category 4-->
+                <div class="Category-item">
+                    <img src="ch.jpeg" alt="Home Care" class="img">
+                    <p>Home Care</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-item" id="Product_1">
+                <img src="1.jpg" alt="Product" class="img">
+                <h2>Product 1</h2>
+                <p>Description: Dress 1</p>
+                <p>Price: Rs200</p>
+                <p>Discount: 10%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-item" id="Product_2">
+                <img src="2.jpg" alt="Product" class="img">
+                <h2>Product 2</h2>
+                <p>Description: Dress 2</p>
+                <p>Price: Rs250</p>
+                <p>Discount: 15%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-item" id="Product_3">
+                <img src="3.jpg" alt="Product" class="img">
+                <h2>Product 3</h2>
+                <p>Description: Dress 3</p>
+                <p>Price: Rs300</p>
+                <p>Discount: 20%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-item" id="Product_4">
+                <img src="4.jpeg" alt="Product" class="img">
+                <h2>Product 4</h2>
+                <p>Description: Dress 4</p>
+                <p>Price: Rs350</p>
+                <p>Discount: 25%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-item" id="Product_5">
+                <img src="5.jpeg" alt="Product" class="img">
+                <h2>Product 5</h2>
+                <p>Description: Dress 5</p>
+                <p>Price: Rs400</p>
+                <p>Discount: 30%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-item" id="Product_6">
+                <img src="6.jpeg" alt="Product" class="img">
+                <h2>Product 6</h2>
+                <p>Description: Dress 6</p>
+                <p>Price: Rs450</p>
+                <p>Discount: 35%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-item" id="Product_7">
+                <img src="7.jpeg" alt="Product" class="img">
+                <h2>Product 7</h2>
+                <p>Description: Dress 7</p>
+                <p>Price: Rs500</p>
+                <p>Discount: 40%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-item" id="Product_8">
+                <img src="8.jpeg" alt="Product" class="img">
+                <h2>Product 8</h2>
+                <p>Description: Dress 8</p>
+                <p>Price: Rs550</p>
+                <p>Discount: 45%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-item" id="Product_9">
+                <img src="9.jpeg" alt="Product" class="img">
+                <h2>Product 9</h2>
+                <p>Description: Dress 9</p>
+                <p>Price: Rs600</p>
+                <p>Discount: 50%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-item" id="Product_10">
+                <img src="10.jpeg" alt="Product" class="img">
+                <h2>Product 10</h2>
+                <p>Description: Dress 10</p>
+                <p>Price: Rs650</p>
+                <p>Discount: 55%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-item" id="Product_11">
+                <img src="11.jpeg" alt="Product" class="img">
+                <h2>Product 11</h2>
+                <p>Description: Dress 11</p>
+                <p>Price: Rs700</p>
+                <p>Discount: 60%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-item" id="Product_12">
+                <img src="12.jpeg" alt="Product" class="img">
+                <h2>Product 12</h2>
+                <p>Description: Dress 12</p>
+                <p>Price: Rs750</p>
+                <p>Discount: 65%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+
+        const frame = document.querySelector('.frame');
+        const left = document.querySelector('.arrow-left');
+        const slider = document.querySelector('.slider');
+        const right = document.querySelector('.arrow-right');
+        const container = document.querySelector('.container');
+
+        let slideNum = 1;
+
+        // Circles
+        const bottom = document.querySelector('.bottom');
+
+        for (let i = 0; i < slider.children.length; i++) {
+            const div = document.createElement('div');
+            div.classList.add('button');
+            bottom.appendChild(div);
+        }
+        const buttons = document.querySelectorAll('.button');
+        buttons[0].style.backgroundColor = "gray";
+
+        const reset = () => {
+            buttons.forEach((button) => {
+                button.style.backgroundColor = "transparent";
+            });
+        }
+
+        buttons.forEach((button, i) => {
+            button.addEventListener('click', () => {
+                reset();
+                slider.style.transform = `translateX(-${i * 736}px)`;
+                button.style.backgroundColor = "gray";
+            });
+        });
+
+        const changeColor = () => {
+            reset();
+            buttons[slideNum - 1].style.backgroundColor = "gray";
+        };
+
+
+
+        // Arrow
+
+        right.addEventListener('click', () => {
+            if (slideNum < slider.children.length) {
+                slider.style.transform = `translateX(-${slideNum * 736}px)`;
+                slideNum++;
+            } else {
+                slider.style.transform = `translateX(0px)`;
+                slideNum = 1;
+            }
+            changeColor();
+        });
+        left.addEventListener('click', () => {
+            if (slideNum > 1) {
+                slider.style.transform = `translateX(-${(slideNum - 2) * 736}px)`;
+                slideNum--;
+            } else {
+                slideNum = slider.children.length;
+                slider.style.transform = `translateX(-${(slideNum - 1) * 736}px)`;
+            }
+            changeColor();
+        });
+
+
+        // Auto Slider
+
+
+        let slideInterval;
+
+        const startSlideShow = () => {
+            slideInterval = setInterval(() => {
+                if (slideNum < slider.children.length) {
+                    slider.style.transform = `translateX(-${slideNum * 736}px)`;
+                    slideNum++;
+                } else {
+                    slider.style.transform = `translateX(0px)`;
+                    slideNum = 1;
+                }
+                changeColor();
+            }, 3000);
+        };
+
+
+        const stopSlideShow = () => {
+            clearInterval(slideInterval);
+        };
+
+        container.addEventListener('mouseover', stopSlideShow);
+        container.addEventListener('mouseout', startSlideShow);
+
+
+        // Check if there are already items in the cart
+        if (localStorage.cartItems) {
+            // Retrieve existing cart items from local storage
+            let c = JSON.parse(localStorage.cartItems);
+            if (c) {
+                let productItems = document.querySelectorAll('.product-item');
+                for (var i of c) {
+                    for (let j of productItems) {
+                        if (j.getAttribute('id') === i.name) {
+                            j.children[5].style.display = "none";
+                            plusMinusBtn(i.name, j.children[5]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Function to handle adding a product to the cart and storing it in local storage
+        function addToCart(productName, button) {
+            // Check if local storage is supported by the browser
+            // Initialize an empty array to store cart items
+            let cartItems = [];
+            // Check if there are already items in the cart
+            if (localStorage.cartItems) {
+                // Retrieve existing cart items from local storage
+                cartItems = JSON.parse(localStorage.cartItems);
+            }
+            let isFound = false;
+            for (var i of cartItems) {
+                if (i.name === productName) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (!isFound) {
+                // Create an object representing the product to be added to cart
+                let product = {
+                    name: productName,
+                    qty: 1
+                };
+                // Add the product to the cart items array
+                cartItems.push(product);
+                // Store the updated cart items array in local storage
+                localStorage.cartItems = JSON.stringify(cartItems);
+            }
+            plusMinusBtn(productName, button);
+        }
+
+        // Add event listeners to all "Add to Cart" buttons
+        let addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        addToCartButtons.forEach(function (button) {
+            button.addEventListener("click", function (event) {
+                let productContainer = event.target.closest(".product-item");
+                let productName = productContainer.getAttribute("id");
+                // let productPrice = productContainer.querySelector("p:nth-of-type(3)").textContent.split(":")[1].trim();
+                addToCart(productName, button);
+            });
+        });
+
+        function plusMinusBtn(productName, button) {
+            // Initialize an empty array to store cart items
+            let cartItems = [];
+            // Check if there are already items in the cart
+            if (localStorage.cartItems) {
+                // Retrieve existing cart items from local storage
+                cartItems = JSON.parse(localStorage.cartItems);
+            }
+            button.style.display = "none";
+            let a = button.parentElement;
+            let plusbtn = document.createElement('button');
+            let productqty = document.createElement('span');
+            let minusbtn = document.createElement('button');
+            plusbtn.innerText = "+";
+            minusbtn.innerText = "-";
+            plusbtn.classList.add('plus-btn');
+            productqty.classList.add('productqty');
+            minusbtn.classList.add('minus-btn');
+            a.appendChild(plusbtn);
+            a.appendChild(productqty);
+            a.appendChild(minusbtn);
+            for (let i of cartItems) {
+                if (i.name === productName) {
+                    productqty.innerText = i.qty;
+                    break;
+                }
+            }
+            minusbtn.addEventListener('click', () => {
+                if (localStorage.cartItems) {
+                    // Retrieve existing cart items from local storage
+                    cartItems = JSON.parse(localStorage.cartItems);
+                }
+                if (parseInt(productqty.innerText) === 1) {
+                    plusbtn.remove();
+                    minusbtn.remove();
+                    productqty.remove();
+                    let newCartItems = [];
+                    for (let i = 0; i < cartItems.length; i++) {
+                        if (cartItems[i].name !== productName) {
+                            newCartItems.push(cartItems[i]);
+                        }
+                    } localStorage.cartItems = JSON.stringify(newCartItems);
+                    button.style.display = "inline";
+                } else {
+                    for (let i of cartItems) {
+                        if (i.name === productName) {
+                            i.qty -= 1;
+                            break;
+                        }
+                    } localStorage.cartItems = JSON.stringify(cartItems); productqty.innerText = parseInt(productqty.innerText)
+                        - 1;
+                }
+            }); plusbtn.addEventListener('click', () => {
+                if (localStorage.cartItems) {
+                    // Retrieve existing cart items from local storage
+                    cartItems = JSON.parse(localStorage.cartItems);
+                }
+                for (let i of cartItems) {
+                    if (i.name === productName) {
+                        i.qty += 1;
+                        break;
+                    }
+                } localStorage.cartItems = JSON.stringify(cartItems);
+                productqty.innerText = parseInt(productqty.innerText) + 1;
+            });
+        }
+
+    </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy;2024 Rights are Reserved</p>
+    </footer>
+</body>
+
+</html>

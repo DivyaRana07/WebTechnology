@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homecare's category</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to left, #ffffff, #f0f1f1);
+        }
+
+        header {
+            margin: 1.5rem;
+            background-color: white;
+            border: 1px solid #cfcfcf;
+            border-radius: 25px;
+            box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09), 0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09), 0 32px 16px rgba(0, 0, 0, 0.09);
+            color: black;
+            padding: 2px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        nav img {
+            max-height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav li a {
+            color: #5d0c94;
+            margin: 0 15px 0 15px;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 20px;
+            padding: 10px;
+            transition: all 0.2s linear;
+        }
+
+        nav li a:hover {
+            cursor: pointer;
+            color: rgb(253, 253, 253);
+            background: #5d0c94;
+        }
+
+        .Category-Homecare {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            max-width: 100%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .product-item {
+            position: relative;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item h2 {
+            margin-top: 0;
+        }
+
+        .add-to-cart-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            /* display:none; */
+        }
+
+        .img {
+            height: 300px;
+            width: 300px;
+            border-radius: 20px;
+        }
+
+        .logo {
+            margin-left: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .plus-btn,
+        .minus-btn {
+            /* display: none; */
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .plus-btn {
+            right: 60px;
+        }
+
+        .productqty {
+            position: absolute;
+            bottom: 10px;
+            right: 45px;
+            /* text-align: center; */
+            /* padding-left: 25px; */
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #40005d;
+        }
+
+        footer {
+            background-color: #2f184b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="home.html">
+                <div class="logo">
+                    <img src="https://th.bing.com/th?id=ODLS.7b56eff7-2e36-4afe-b129-6be999a41335&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
+                        alt="Logo">
+                    <h3>E-Commerce Website</h3>
+                </div>
+            </a>
+            <ul>
+                <li><a href="FAQ.html">FAQ?</a></li>
+                <li><a href="#">Your orders</a></li>
+                <li><a href="cart.html">My Cart</a></li>
+                <li><a href="#">Services</a></li>
+                <!-- <li><a href="#">Documentation</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="Category-Homecare">
+            <div class="product-item" id="Product_61">
+                <img src="/imgs/H1.jpeg" class="img" alt="Homecare">
+                <h2>Floral White</h2>
+                <p>Description: Cotton </p>
+                <p>Price: Rs599</p>
+                <p>Discount: 10%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_62">
+                <img src="/imgs/H2.jpeg" class="img" alt="Homecare">
+                <h2>Floral white & pink</h2>
+                <p>Description: Cotton</p>
+                <p>Price: Rs1599</p>
+                <p>Discount: 15%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_63">
+                <img src="/imgs/H3.jpeg" class="img" alt="Homecare">
+                <h2>Geometric Blue</h2>
+                <p>Description: Cotton</p>
+                <p>Price: Rs599</p>
+                <p>Discount: 20%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_64">
+                <img src="/imgs/H4.jpeg" class="img" alt="Homecare">
+                <h2>White with Pink</h2>
+                <p>Description: Minimal Floral </p>
+                <p>Price: Rs999</p>
+                <p>Discount: 25%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_65">
+                <img src="/imgs/H5.jpeg" class="img" alt="Homecare">
+                <h2>Geometric Multi</h2>
+                <p>Description: Cotton</p>
+                <p>Price: Rs499</p>
+                <p>Discount: 28%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <div class="product-item" id="Product_66">
+                <img src="/imgs/H6.jpeg" class="img" alt="Homecare">
+                <h2>Shutle Brown</h2>
+                <p>Description: Tera Cotton </p>
+                <p>Price: Rs1499</p>
+                <p>Discount: 45%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_67">
+                <img src="/imgs/H7.jpeg" class="img" alt="Homecare">
+                <h2>Monocromatic Peach</h2>
+                <p>Description: Silk</p>
+                <p>Price: Rs2999</p>
+                <p>Discount: 33%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_68">
+                <img src="/imgs/H8.jpeg" class="img" alt="Homecare">
+                <h2>Geometric mixed</h2>
+                <p>Description: Pure cotton</p>
+                <p>Price: Rs599</p>
+                <p>Discount: 22%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_69">
+                <img src="/imgs/H9.jpeg" class="img" alt="Homecare">
+                <h2>Floral Blue</h2>
+                <p>Description: Pure Cotton</p>
+                <p>Price: Rs599</p>
+                <p>Discount: 23%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_70">
+                <img src="/imgs/H10.jpeg" class="img" alt="Homecare">
+                <h2>Off-White</h2>
+                <p>Description: Cotton</p>
+                <p>Price: Rs699</p>
+                <p>Discount: 25%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_71">
+                <img src="/imgs/H11.jpeg" class="img" alt="Homecare">
+                <h2>Ocean Blue</h2>
+                <p>Description: Casual</p>
+                <p>Price: Rs699</p>
+                <p>Discount: 25%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_72">
+                <img src="/imgs/H12.jpeg" class="img" alt="Homecare">
+                <h2>Royal Blue</h2>
+                <p>Description: Volvet</p>
+                <p>Price: Rs999</p>
+                <p>Discount: 25%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_73">
+                <img src="/imgs/H13.jpeg" class="img" alt="Homecare">
+                <h2>Bright Pink</h2>
+                <p>Description: Pure Cotton</p>
+                <p>Price: Rs650</p>
+                <p>Discount: 20%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_74">
+                <img src="/imgs/H14.jpeg" class="img" alt="Homecare">
+                <h2>Floral Pink</h2>
+                <p>Description: Cotton</p>
+                <p>Price: Rs599</p>
+                <p>Discount: 15%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_75">
+                <img src="/imgs/H15.jpeg" class="img" alt="Homecare">
+                <h2>Geometric Lines</h2>
+                <p>Description: Cotton</p>
+                <p>Price: Rs750</p>
+                <p>Discount: 45%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+            <div class="product-item" id="Product_76">
+                <img src="/imgs/H16.jpeg" class="img" alt="Homecare">
+                <h2>Geometric White</h2>
+                <p>Description: Cotton</p>
+                <p>Price: Rs999</p>
+                <p>Discount: 44%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Check if there are already items in the cart
+        if (localStorage.cartItems) {
+            // Retrieve existing cart items from local storage
+            let c = JSON.parse(localStorage.cartItems);
+            if (c) {
+                let productItems = document.querySelectorAll('.product-item');
+                for (var i of c) {
+                    for (let j of productItems) {
+                        if (j.getAttribute('id') === i.name) {
+                            j.children[5].style.display = "none";
+                            plusMinusBtn(i.name, j.children[5]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Function to handle adding a product to the cart and storing it in local storage
+        function addToCart(productName, button) {
+            // Check if local storage is supported by the browser
+            // Initialize an empty array to store cart items
+            let cartItems = [];
+            // Check if there are already items in the cart
+            if (localStorage.cartItems) {
+                // Retrieve existing cart items from local storage
+                cartItems = JSON.parse(localStorage.cartItems);
+            }
+            let isFound = false;
+            for (var i of cartItems) {
+                if (i.name === productName) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (!isFound) {
+                // Create an object representing the product to be added to cart
+                let product = {
+                    name: productName,
+                    qty: 1
+                };
+                // Add the product to the cart items array
+                cartItems.push(product);
+                // Store the updated cart items array in local storage
+                localStorage.cartItems = JSON.stringify(cartItems);
+            }
+            plusMinusBtn(productName, button);
+        }
+
+        // Add event listeners to all "Add to Cart" buttons
+        let addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        addToCartButtons.forEach(function (button) {
+            button.addEventListener("click", function (event) {
+                let productContainer = event.target.closest(".product-item");
+                let productName = productContainer.getAttribute("id");
+                // let productPrice = productContainer.querySelector("p:nth-of-type(3)").textContent.split(":")[1].trim();
+                addToCart(productName, button);
+            });
+        });
+
+        function plusMinusBtn(productName, button) {
+            // Initialize an empty array to store cart items
+            let cartItems = [];
+            // Check if there are already items in the cart
+            if (localStorage.cartItems) {
+                // Retrieve existing cart items from local storage
+                cartItems = JSON.parse(localStorage.cartItems);
+            }
+            button.style.display = "none";
+            let a = button.parentElement;
+            let plusbtn = document.createElement('button');
+            let productqty = document.createElement('span');
+            let minusbtn = document.createElement('button');
+            plusbtn.innerText = "+";
+            minusbtn.innerText = "-";
+            plusbtn.classList.add('plus-btn');
+            productqty.classList.add('productqty');
+            minusbtn.classList.add('minus-btn');
+            a.appendChild(plusbtn);
+            a.appendChild(productqty);
+            a.appendChild(minusbtn);
+            for (let i of cartItems) {
+                if (i.name === productName) {
+                    productqty.innerText = i.qty;
+                    break;
+                }
+            }
+            minusbtn.addEventListener('click', () => {
+                if (localStorage.cartItems) {
+                    // Retrieve existing cart items from local storage
+                    cartItems = JSON.parse(localStorage.cartItems);
+                }
+                if (parseInt(productqty.innerText) === 1) {
+                    plusbtn.remove();
+                    minusbtn.remove();
+                    productqty.remove();
+                    let newCartItems = [];
+                    for (let i = 0; i < cartItems.length; i++) {
+                        if (cartItems[i].name !== productName) {
+                            newCartItems.push(cartItems[i]);
+                        }
+                    } localStorage.cartItems = JSON.stringify(newCartItems);
+                    button.style.display = "inline";
+                }
+                else {
+                    for (let i of cartItems) {
+                        if (i.name === productName) {
+                            i.qty -= 1;
+                            break;
+                        }
+                    } localStorage.cartItems = JSON.stringify(cartItems);
+                    productqty.innerText = parseInt(productqty.innerText) - 1;
+                }
+            });
+            plusbtn.addEventListener('click', () => {
+                if (localStorage.cartItems) {
+                    // Retrieve existing cart items from local storage
+                    cartItems = JSON.parse(localStorage.cartItems);
+                }
+                for (let i of cartItems) {
+                    if (i.name === productName) {
+                        i.qty += 1;
+                        break;
+                    }
+                } localStorage.cartItems = JSON.stringify(cartItems);
+                productqty.innerText = parseInt(productqty.innerText) + 1;
+            });
+        }
+    </script>
+    <footer>
+        <p>&copy;2024 Rights are Reserved</p>
+    </footer>
+</body>
+
+</html>

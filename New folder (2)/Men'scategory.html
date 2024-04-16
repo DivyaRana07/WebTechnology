@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's category</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to left, #ffffff, #f0f1f1);
+        }
+
+        header {
+            margin: 1.5rem;
+            background-color: white;
+            border: 1px solid #cfcfcf;
+            border-radius: 25px;
+            box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09), 0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09), 0 32px 16px rgba(0, 0, 0, 0.09);
+            color: black;
+            padding: 2px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        nav img {
+            max-height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav li a {
+            color: #5d0c94;
+            margin: 0 15px 0 15px;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 20px;
+            padding: 10px;
+            transition: all 0.2s linear;
+        }
+
+        nav li a:hover {
+            cursor: pointer;
+            color: rgb(253, 253, 253);
+            background: #5d0c94;
+        }
+        .Category-Men{
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            max-width: 100%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .product-item {
+            position: relative;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item h2 {
+            margin-top: 0;
+        }
+        .add-to-cart-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            /* display:none; */
+        }
+        .img{
+            height: 300px;
+            width: 300px;
+            border-radius: 20px;
+        }
+        .logo {
+            margin-left: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .plus-btn,
+        .minus-btn {
+            /* display: none; */
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .plus-btn {
+            right: 60px;
+        }
+
+        .productqty {
+            position: absolute;
+            bottom: 10px;
+            right: 45px;
+            /* text-align: center; */
+            /* padding-left: 25px; */
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #40005d;
+        }
+
+        footer {
+            background-color: #2f184b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="home.html">
+                <div class="logo">
+                    <img src="https://th.bing.com/th?id=ODLS.7b56eff7-2e36-4afe-b129-6be999a41335&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
+                        alt="Logo">
+                    <h3>E-Commerce Website</h3>
+                </div>
+            </a>
+            <ul>
+                <li><a href="FAQ.html">FAQ?</a></li>
+                <li><a href="#">Your orders</a></li>
+                <li><a href="cart.html">My Cart</a></li>
+                <li><a href="#">Services</a></li>
+                <!-- <li><a href="#">Documentation</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+
+    <section>
+        <div class="Category-Men">
+                <div class="product-item" id="Product_13">
+                    <img src="/imgs/M1.jpeg" class = "img" alt="Men">
+                    <h2>T-shirt</h2>
+                    <p>Description: Casual </p>
+                    <p>Price: Rs599</p>
+                    <p>Discount: 10%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_14">
+                    <img src="/imgs/M2.jpeg" class = "img" alt="Men">
+                    <h2>Jacket</h2>
+                    <p>Description: Casual</p>
+                    <p>Price: Rs1599</p>
+                    <p>Discount: 15%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_15">
+                    <img src="/imgs/M3.jpeg" class = "img" alt="Men">
+                    <h2>Shirt</h2>
+                    <p>Description: Casual</p>
+                    <p>Price: Rs599</p>
+                    <p>Discount: 20%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_16">
+                    <img src="/imgs/M4.jpeg" class = "img" alt="Men">
+                    <h2>White Shirt</h2>
+                    <p>Description: Formal </p>
+                    <p>Price: Rs999</p>
+                    <p>Discount: 25%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_17">
+                    <img src="/imgs/M5.jpeg" class = "img" alt="Men">
+                    <h2>Suit</h2>
+                    <p>Description: Formal</p>
+                    <p>Price: Rs11999</p>
+                    <p>Discount: 28%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            
+                <div class="product-item" id="Product_18">
+                    <img src="/imgs/M6.jpeg" class = "img" alt="Men">
+                    <h2>Shirt & Pant</h2>
+                    <p>Description: Formal </p>
+                    <p>Price: Rs3350</p>
+                    <p>Discount: 45%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_19">
+                    <img src="/imgs/M7.jpeg" class = "img" alt="Men">
+                    <h2>Jacket 2</h2>
+                    <p>Description: Long Jacket</p>
+                    <p>Price: Rs2999</p>
+                    <p>Discount: 55%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_20">
+                    <img src="/imgs/M8.jpeg" class = "img" alt="Men">
+                    <h2>Jeans & T-shirt</h2>
+                    <p>Description: Denim</p>
+                    <p>Price: Rs2599</p>
+                    <p>Discount: 22%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_21">
+                    <img src="/imgs/M9.jpeg" class = "img" alt="Men">
+                    <h2>Jacket 3</h2>
+                    <p>Description: Denim</p>
+                    <p>Price: Rs1499</p>
+                    <p>Discount: 23%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_22">
+                    <img src="/imgs/M10.jpeg" class = "img" alt="Men">
+                    <h2>Combo</h2>
+                    <p>Description: Party Wear</p>
+                    <p>Price: Rs3500</p>
+                    <p>Discount: 25%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_23">
+                    <img src="/imgs/M11.jpeg" class = "img" alt="Men">
+                    <h2>Shirt 2</h2>
+                    <p>Description: Casual</p>
+                    <p>Price: Rs999</p>
+                    <p>Discount: 25%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_24">
+                    <img src="/imgs/M12.jpeg" class = "img" alt="Men">
+                    <h2>Jacket 4</h2>
+                    <p>Description: Denim</p>
+                    <p>Price: Rs999</p>
+                    <p>Discount: 25%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_25">
+                    <img src="/imgs/M13.jpeg" class = "img" alt="Men">
+                    <h2>Cord-set</h2>
+                    <p>Description: Party Wear</p>
+                    <p>Price: Rs4350</p>
+                    <p>Discount: 20%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_26">
+                    <img src="/imgs/M14.jpeg" class = "img" alt="Men">
+                    <h2>Grey Suit</h2>
+                    <p>Description: Formal</p>
+                    <p>Price: Rs5599</p>
+                    <p>Discount: 15%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_27">
+                    <img src="/imgs/M15.jpeg" class = "img" alt="Men">
+                    <h2>White Coat</h2>
+                    <p>Description: Formal</p>
+                    <p>Price: Rs4350</p>
+                    <p>Discount: 45%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item" id="Product_28">
+                    <img src="/imgs/M16.jpeg" class = "img" alt="Men">
+                    <h2>3-piece Set</h2>
+                    <p>Description: Party dress</p>
+                    <p>Price: Rs8999</p>
+                    <p>Discount: 44%</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                
+        </div>
+    </section>
+    <script>
+        // Check if there are already items in the cart
+        if (localStorage.cartItems) {
+            // Retrieve existing cart items from local storage
+            let c = JSON.parse(localStorage.cartItems);
+            if (c) {
+                let productItems = document.querySelectorAll('.product-item');
+                for (var i of c) {
+                    for (let j of productItems) {
+                        if (j.getAttribute('id') === i.name) {
+                            j.children[5].style.display = "none";
+                            plusMinusBtn(i.name, j.children[5]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Function to handle adding a product to the cart and storing it in local storage
+        function addToCart(productName, button) {
+            // Check if local storage is supported by the browser
+            // Initialize an empty array to store cart items
+            let cartItems = [];
+            // Check if there are already items in the cart
+            if (localStorage.cartItems) {
+                // Retrieve existing cart items from local storage
+                cartItems = JSON.parse(localStorage.cartItems);
+            }
+            let isFound = false;
+            for (var i of cartItems) {
+                if (i.name === productName) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (!isFound) {
+                // Create an object representing the product to be added to cart
+                let product = {
+                    name: productName,
+                    qty: 1
+                };
+                // Add the product to the cart items array
+                cartItems.push(product);
+                // Store the updated cart items array in local storage
+                localStorage.cartItems = JSON.stringify(cartItems);
+            }
+            plusMinusBtn(productName, button);
+        }
+
+        // Add event listeners to all "Add to Cart" buttons
+        let addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        addToCartButtons.forEach(function (button) {
+            button.addEventListener("click", function (event) {
+                let productContainer = event.target.closest(".product-item");
+                let productName = productContainer.getAttribute("id");
+                // let productPrice = productContainer.querySelector("p:nth-of-type(3)").textContent.split(":")[1].trim();
+                addToCart(productName, button);
+            });
+        });
+
+        function plusMinusBtn(productName, button) {
+            // Initialize an empty array to store cart items
+            let cartItems = [];
+            // Check if there are already items in the cart
+            if (localStorage.cartItems) {
+                // Retrieve existing cart items from local storage
+                cartItems = JSON.parse(localStorage.cartItems);
+            }
+            button.style.display = "none";
+            let a = button.parentElement;
+            let plusbtn = document.createElement('button');
+            let productqty = document.createElement('span');
+            let minusbtn = document.createElement('button');
+            plusbtn.innerText = "+";
+            minusbtn.innerText = "-";
+            plusbtn.classList.add('plus-btn');
+            productqty.classList.add('productqty');
+            minusbtn.classList.add('minus-btn');
+            a.appendChild(plusbtn);
+            a.appendChild(productqty);
+            a.appendChild(minusbtn);
+            for (let i of cartItems){
+                if (i.name===productName){
+                    productqty.innerText = i.qty;
+                    break;
+                }
+            }
+            minusbtn.addEventListener('click', () => {
+                if (localStorage.cartItems) {
+                    // Retrieve existing cart items from local storage
+                    cartItems = JSON.parse(localStorage.cartItems);
+                }
+                if (parseInt(productqty.innerText) === 1) {
+                    plusbtn.remove();
+                    minusbtn.remove();
+                    productqty.remove();
+                    let newCartItems = [];
+                    for (let i = 0; i < cartItems.length; i++) {
+                        if (cartItems[i].name !== productName) {
+                            newCartItems.push(cartItems[i]);
+                        }
+                    } localStorage.cartItems = JSON.stringify(newCartItems);
+                    button.style.display = "inline";
+                }
+                else {
+                    for (let i of cartItems) {
+                        if (i.name === productName) {
+                            i.qty -= 1;
+                            break;
+                        }
+                    } localStorage.cartItems = JSON.stringify(cartItems);
+                    productqty.innerText = parseInt(productqty.innerText) - 1;
+                }
+            });
+            plusbtn.addEventListener('click', () => {
+                if (localStorage.cartItems) {
+                    // Retrieve existing cart items from local storage
+                    cartItems = JSON.parse(localStorage.cartItems);
+                }
+                for (let i of cartItems) {
+                    if (i.name === productName) {
+                        i.qty += 1;
+                        break;
+                    }
+                } localStorage.cartItems = JSON.stringify(cartItems);
+                productqty.innerText = parseInt(productqty.innerText) + 1;
+            });
+        }
+    </script>
+    <footer>
+        <p>&copy;2024 Rights are Reserved</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to left, #ffffff, #f0f1f1);
+        }
+
+        header {
+            margin: 1.5rem;
+            background-color: white;
+            border: 1px solid #cfcfcf;
+            border-radius: 25px;
+            box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09), 0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09), 0 32px 16px rgba(0, 0, 0, 0.09);
+            color: black;
+            padding: 2px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        nav img {
+            max-height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav li a {
+            color: #5d0c94;
+            margin: 0 15px 0 15px;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 20px;
+            padding: 10px;
+            transition: all 0.2s linear;
+        }
+
+        nav li a:hover {
+            cursor: pointer;
+            color: rgb(253, 253, 253);
+            background: #5d0c94;
+        }
+
+        section {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            max-width: 100%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            text-align: center;
+        }
+
+        .add-to-cart-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            /* display:none; */
+        }
+
+        .plus-btn,
+        .minus-btn {
+            /* display: none; */
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .plus-btn {
+            right: 60px;
+        }
+
+        .productqty {
+            position: absolute;
+            bottom: 10px;
+            right: 45px;
+            /* text-align: center; */
+            /* padding-left: 25px; */
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #40005d;
+        }
+
+        .logo {
+            margin-left: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .product-item {
+            position: relative;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item h2 {
+            margin-top: 0;
+        }
+
+        .img {
+            height: 300px;
+            width: 300px;
+            border-radius: 20px;
+        }
+
+        footer {
+            background-color: #2f184b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="#">
+                <div class="logo">
+                    <img src="https://th.bing.com/th?id=ODLS.7b56eff7-2e36-4afe-b129-6be999a41335&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
+                        alt="Logo">
+                    <h3>E-Commerce Website</h3>
+                </div>
+            </a>
+            <ul>
+                <li><a href="FAQ.html">FAQ?</a></li>
+                <li><a href="#">Your orders</a></li>
+                <li><a href="cart.html">My Cart</a></li>
+                <li><a href="#">Services</a></li>
+                <!-- <li><a href="#">Documentation</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-item">
+                <img src="1.jpg" alt="Product" class="img">
+                <h2>Product 1</h2>
+                <p>Description: Dress 1</p>
+                <p>Price: Rs200</p>
+                <p>Discount: 10%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-item">
+                <img src="2.jpg" alt="Product" class="img">
+                <h2>Product 2</h2>
+                <p>Description: Dress 2</p>
+                <p>Price: Rs250</p>
+                <p>Discount: 15%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-item">
+                <img src="3.jpg" alt="Product" class="img">
+                <h2>Product 3</h2>
+                <p>Description: Dress 3</p>
+                <p>Price: Rs300</p>
+                <p>Discount: 20%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-item">
+                <img src="4.jpeg" alt="Product" class="img">
+                <h2>Product 4</h2>
+                <p>Description: Dress 4</p>
+                <p>Price: Rs350</p>
+                <p>Discount: 25%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-item">
+                <img src="5.jpeg" alt="Product" class="img">
+                <h2>Product 5</h2>
+                <p>Description: Dress 5</p>
+                <p>Price: Rs400</p>
+                <p>Discount: 30%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-item">
+                <img src="6.jpeg" alt="Product" class="img">
+                <h2>Product 6</h2>
+                <p>Description: Dress 6</p>
+                <p>Price: Rs450</p>
+                <p>Discount: 35%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-item">
+                <img src="7.jpeg" alt="Product" class="img">
+                <h2>Product 7</h2>
+                <p>Description: Dress 7</p>
+                <p>Price: Rs500</p>
+                <p>Discount: 40%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-item">
+                <img src="8.jpeg" alt="Product" class="img">
+                <h2>Product 8</h2>
+                <p>Description: Dress 8</p>
+                <p>Price: Rs550</p>
+                <p>Discount: 45%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-item">
+                <img src="9.jpeg" alt="Product" class="img">
+                <h2>Product 9</h2>
+                <p>Description: Dress 9</p>
+                <p>Price: Rs600</p>
+                <p>Discount: 50%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-item">
+                <img src="10.jpeg" alt="Product" class="img">
+                <h2>Product 10</h2>
+                <p>Description: Dress 10</p>
+                <p>Price: Rs650</p>
+                <p>Discount: 55%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-item">
+                <img src="11.jpeg" alt="Product" class="img">
+                <h2>Product 11</h2>
+                <p>Description: Dress 11</p>
+                <p>Price: Rs700</p>
+                <p>Discount: 60%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-item">
+                <img src="12.jpeg" alt="Product" class="img">
+                <h2>Product 12</h2>
+                <p>Description: Dress 12</p>
+                <p>Price: Rs750</p>
+                <p>Discount: 65%</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // Function to check if a product is in the cart and display plus-minus buttons accordingly
+    function checkCartItems() {
+        // Check if local storage is supported by the browser
+        if (localStorage.cartItems) {
+            // Retrieve existing cart items from local storage
+            let cartItems = JSON.parse(localStorage.cartItems);
+            if (cartItems) {
+                // Get all product items
+                let productItems = document.querySelectorAll('.product-item');
+                for (let product of productItems) {
+                    // Get the product name
+                    let productName = product.querySelector("h2").textContent;
+                    // Check if the product is in the cart
+                    let isInCart = cartItems.some(item => item.name === productName);
+                    if (isInCart) {
+                        // If the product is in the cart, display plus-minus buttons
+                        let button = product.querySelector('.add-to-cart-btn');
+                        plusMinusBtn(productName, button);
+                    }
+                }
+            }
+        }
+    }
+
+    // Check cart items when the page loads
+    window.addEventListener('load', checkCartItems);
+
+    // Function to handle adding a product to the cart and storing it in local storage
+    function addToCart(productName, button) {
+        // Check if local storage is supported by the browser
+        // Initialize an empty array to store cart items
+        let cartItems = [];
+        // Check if there are already items in the cart
+        if (localStorage.cartItems) {
+            // Retrieve existing cart items from local storage
+            cartItems = JSON.parse(localStorage.cartItems);
+        }
+        let isFound = cartItems.some(item => item.name === productName);
+        if (!isFound) {
+            // Create an object representing the product to be added to cart
+            let product = {
+                name: productName,
+                qty: 1
+            };
+            // Add the product to the cart items array
+            cartItems.push(product);
+            // Store the updated cart items array in local storage
+            localStorage.cartItems = JSON.stringify(cartItems);
+            // Display plus-minus buttons
+            plusMinusBtn(productName, button);
+        }
+    }
+
+    // Add event listeners to all "Add to Cart" buttons
+    let addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+    addToCartButtons.forEach(function (button) {
+        button.addEventListener("click", function (event) {
+            let productContainer = event.target.closest(".product-item");
+            let productName = productContainer.querySelector("h2").textContent;
+            // let productPrice = productContainer.querySelector("p:nth-of-type(3)").textContent.split(":")[1].trim();
+            addToCart(productName, button);
+        });
+    });
+
+    // Function to display plus-minus buttons
+    function plusMinusBtn(productName, button) {
+        // Hide the add to cart button
+        button.style.display = "none";
+        // Create plus and minus buttons
+        let plusBtn = document.createElement('button');
+        let minusBtn = document.createElement('button');
+        plusBtn.innerText = "+";
+        minusBtn.innerText = "-";
+        plusBtn.classList.add('plus-btn');
+        minusBtn.classList.add('minus-btn');
+        // Create span to display product quantity
+        let productQty = document.createElement('span');
+        productQty.classList.add('productqty');
+        productQty.innerText = 1;
+        // Append buttons and quantity span
+        let container = button.parentElement;
+        container.appendChild(plusBtn);
+        container.appendChild(productQty);
+        container.appendChild(minusBtn);
+        // Event listeners for plus and minus buttons
+        minusBtn.addEventListener('click', () => updateProductQuantity(productName, -1, productQty));
+        plusBtn.addEventListener('click', () => updateProductQuantity(productName, 1, productQty));
+    }
+
+    // Function to update product quantity
+    function updateProductQuantity(productName, change, quantityElement) {
+        // Check if local storage is supported by the browser
+        if (localStorage.cartItems) {
+            // Retrieve existing cart items from local storage
+            let cartItems = JSON.parse(localStorage.cartItems);
+            // Find the product in the cart
+            let product = cartItems.find(item => item.name === productName);
+            if (product) {
+                // Update product quantity
+                product.qty += change;
+                if (product.qty <= 0) {
+                    // Remove product from cart if quantity becomes zero or negative
+                    cartItems = cartItems.filter(item => item.name !== productName);
+                    // Show add to cart button
+                    let button = quantityElement.nextElementSibling;
+                    button.style.display = "inline";
+                    // Remove plus-minus buttons and quantity span
+                    quantityElement.remove();
+                    quantityElement.previousElementSibling.remove();
+                    quantityElement.nextElementSibling.remove();
+                } else {
+                    // Update quantity span
+                    quantityElement.innerText = product.qty;
+                }
+                // Update cart items in local storage
+                localStorage.cartItems = JSON.stringify(cartItems);
+            }
+        }
+    }
+    </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy;2024 Rights are Reserved</p>
+    </footer>
+</body>
+
+</html>

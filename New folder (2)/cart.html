@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to left, #ffffff, #f0f1f1);
+        }
+
+        header {
+            margin: 1.5rem;
+            background-color: white;
+            border: 1px solid #cfcfcf;
+            border-radius: 25px;
+            box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09), 0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09), 0 32px 16px rgba(0, 0, 0, 0.09);
+            color: black;
+            padding: 2px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        nav img {
+            max-height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav li a {
+            color: #5d0c94;
+            margin: 0 15px 0 15px;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 20px;
+            padding: 10px;
+            transition: all 0.2s linear;
+        }
+
+        nav li a:hover {
+            cursor: pointer;
+            color: rgb(253, 253, 253);
+            background: #5d0c94;
+        }
+
+        section {
+            margin: 50px auto;
+            margin-bottom: 100px;
+            padding: 50px 10rem;
+            background-color: white;
+            border-radius: 5px;
+            box-sizing: border-box;
+            max-width: 90%;
+            height: auto;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .product-item {
+            text-align: left;
+            position: relative;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 25px;
+            display: none;
+        }
+
+        .product-item:hover {
+            background-color: #5d0c94;
+            color: #ffffff;
+        }
+
+        .plus-btn,
+        .minus-btn {
+            /* display: none; */
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .plus-btn {
+            right: 40px;
+        }
+
+        .img {
+            height: 100px;
+            width: 100px;
+            border-radius: 20px;
+        }
+
+        .logo {
+            margin-left: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* .description {
+            display: inline;
+            margin: 30px;
+        } */
+        .buyNow {
+            position: absolute;
+            /* bottom: 10px;
+            right: 10px; */
+            /* padding: 10px; */
+            background-color: #5d0c94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: none;
+        }
+
+        footer {
+            background-color: #2f184b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+        <nav>
+            <a href="home.html">
+                <div class="logo">
+                    <img src="https://th.bing.com/th?id=ODLS.7b56eff7-2e36-4afe-b129-6be999a41335&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
+                        alt="Logo">
+                    <h3>E-Commerce Website</h3>
+                </div>
+            </a>
+            <ul>
+                <li><a href="FAQ.html">FAQ?</a></li>
+                <li><a href="#">Your orders</a></li>
+                <li><a href="cart.html">My Cart</a></li>
+                <li><a href="#">Services</a></li>
+                <!-- <li><a href="#">Documentation</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section for displaying cart items -->
+    <section>
+        <h2>Your Cart</h2>
+        <div class="product-item" id="Product_1">
+            <img src="1.jpg" alt="Product" class="img">
+            <h2>Product 1</h2>
+            <p>Description: Dress 1</p>
+            <p>Price: Rs200</p>
+            <p>Discount: 10%</p>
+        </div>
+        <div class="product-item" id="Product_2">
+            <img src="2.jpg" alt="Product" class="img">
+            <h2>Product 2</h2>
+            <p>Description: Dress 2</p>
+            <p>Price: Rs250</p>
+            <p>Discount: 15%</p>
+        </div>
+        <div class="product-item" id="Product_3">
+            <img src="3.jpg" alt="Product" class="img">
+            <h2>Product 3</h2>
+            <p>Description: Dress 3</p>
+            <p>Price: Rs300</p>
+            <p>Discount: 20%</p>
+        </div>
+        <div class="product-item" id="Product_4">
+            <img src="4.jpeg" alt="Product" class="img">
+            <h2>Product 4</h2>
+            <p>Description: Dress 4</p>
+            <p>Price: Rs350</p>
+            <p>Discount: 25%</p>
+        </div>
+
+        <div class="product-item" id="Product_5">
+            <img src="5.jpeg" alt="Product" class="img">
+            <h2>Product 5</h2>
+            <p>Description: Dress 5</p>
+            <p>Price: Rs400</p>
+            <p>Discount: 30%</p>
+        </div>
+
+
+        <div class="product-item" id="Product_6">
+            <img src="6.jpeg" alt="Product" class="img">
+            <h2>Product 6</h2>
+            <p>Description: Dress 6</p>
+            <p>Price: Rs450</p>
+            <p>Discount: 35%</p>
+        </div>
+
+
+        <div class="product-item" id="Product_7">
+            <img src="7.jpeg" alt="Product" class="img">
+            <h2>Product 7</h2>
+            <p>Description: Dress 7</p>
+            <p>Price: Rs500</p>
+            <p>Discount: 40%</p>
+        </div>
+
+
+        <div class="product-item" id="Product_8">
+            <img src="8.jpeg" alt="Product" class="img">
+            <h2>Product 8</h2>
+            <p>Description: Dress 8</p>
+            <p>Price: Rs550</p>
+            <p>Discount: 45%</p>
+        </div>
+
+
+        <div class="product-item" id="Product_9">
+            <img src="9.jpeg" alt="Product" class="img">
+            <h2>Product 9</h2>
+            <p>Description: Dress 9</p>
+            <p>Price: Rs600</p>
+            <p>Discount: 50%</p>
+        </div>
+
+
+        <div class="product-item" id="Product_10">
+            <img src="10.jpeg" alt="Product" class="img">
+            <h2>Product 10</h2>
+            <p>Description: Dress 10</p>
+            <p>Price: Rs650</p>
+            <p>Discount: 55%</p>
+        </div>
+
+
+        <div class="product-item" id="Product_11>
+            <img src="11.jpeg" alt="Product" class="img"">
+            <h2>Product 11</h2>
+            <p>Description: Dress 11</p>
+            <p>Price: Rs700</p>
+            <p>Discount: 60%</p>
+        </div>
+
+
+        <div class="product-item" id="Product_12">
+            <img src="12.jpeg" alt="Product" class="img">
+            <h2>Product 12</h2>
+            <p>Description: Dress 12</p>
+            <p>Price: Rs750</p>
+            <p>Discount: 65%</p>
+        </div>
+        <div class="product-item" id="Product_13">
+            <img src="/imgs/M1.jpeg" class="img" alt="Men">
+            <h2>T-shirt</h2>
+            <p>Description: Casual </p>
+            <p>Price: Rs599</p>
+            <p>Discount: 10%</p>
+        </div>
+        <div class="product-item" id="Product_14">
+            <img src="/imgs/M2.jpeg" class="img" alt="Men">
+            <h2>Jacket</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs1599</p>
+            <p>Discount: 15%</p>
+
+        </div>
+        <div class="product-item" id="Product_15">
+            <img src="/imgs/M3.jpeg" class="img" alt="Men">
+            <h2>Shirt</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs599</p>
+            <p>Discount: 20%</p>
+
+        </div>
+        <div class="product-item" id="Product_16">
+            <img src="/imgs/M4.jpeg" class="img" alt="Men">
+            <h2>White Shirt</h2>
+            <p>Description: Formal </p>
+            <p>Price: Rs999</p>
+            <p>Discount: 25%</p>
+
+        </div>
+        <div class="product-item" id="Product_17">
+            <img src="/imgs/M5.jpeg" class="img" alt="Men">
+            <h2>Suit</h2>
+            <p>Description: Formal</p>
+            <p>Price: Rs11999</p>
+            <p>Discount: 28%</p>
+
+        </div>
+
+        <div class="product-item" id="Product_18">
+            <img src="/imgs/M6.jpeg" class="img" alt="Men">
+            <h2>Shirt & Pant</h2>
+            <p>Description: Formal </p>
+            <p>Price: Rs3350</p>
+            <p>Discount: 45%</p>
+
+        </div>
+        <div class="product-item" id="Product_19">
+            <img src="/imgs/M7.jpeg" class="img" alt="Men">
+            <h2>Jacket 2</h2>
+            <p>Description: Long Jacket</p>
+            <p>Price: Rs2999</p>
+            <p>Discount: 55%</p>
+
+        </div>
+        <div class="product-item" id="Product_20">
+            <img src="/imgs/M8.jpeg" class="img" alt="Men">
+            <h2>Jeans & T-shirt</h2>
+            <p>Description: Denim</p>
+            <p>Price: Rs2599</p>
+            <p>Discount: 22%</p>
+
+        </div>
+        <div class="product-item" id="Product_21">
+            <img src="/imgs/M9.jpeg" class="img" alt="Men">
+            <h2>Jacket 3</h2>
+            <p>Description: Denim</p>
+            <p>Price: Rs1499</p>
+            <p>Discount: 23%</p>
+
+        </div>
+        <div class="product-item" id="Product_22">
+            <img src="/imgs/M10.jpeg" class="img" alt="Men">
+            <h2>Combo</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs3500</p>
+            <p>Discount: 25%</p>
+
+        </div>
+        <div class="product-item" id="Product_23">
+            <img src="/imgs/M11.jpeg" class="img" alt="Men">
+            <h2>Shirt 2</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs999</p>
+            <p>Discount: 25%</p>
+
+        </div>
+        <div class="product-item" id="Product_24">
+            <img src="/imgs/M12.jpeg" class="img" alt="Men">
+            <h2>Jacket 4</h2>
+            <p>Description: Denim</p>
+            <p>Price: Rs999</p>
+            <p>Discount: 25%</p>
+
+        </div>
+        <div class="product-item" id="Product_25">
+            <img src="/imgs/M13.jpeg" class="img" alt="Men">
+            <h2>Cord-set</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs4350</p>
+            <p>Discount: 20%</p>
+
+        </div>
+        <div class="product-item" id="Product_26">
+            <img src="/imgs/M14.jpeg" class="img" alt="Men">
+            <h2>Grey Suit</h2>
+            <p>Description: Formal</p>
+            <p>Price: Rs5599</p>
+            <p>Discount: 15%</p>
+
+        </div>
+        <div class="product-item" id="Product_27">
+            <img src="/imgs/M15.jpeg" class="img" alt="Men">
+            <h2>White Coat</h2>
+            <p>Description: Formal</p>
+            <p>Price: Rs4350</p>
+            <p>Discount: 45%</p>
+
+        </div>
+        <div class="product-item" id="Product_28">
+            <img src="/imgs/M16.jpeg" class="img" alt="Men">
+            <h2>3-piece Set</h2>
+            <p>Description: Party dress</p>
+            <p>Price: Rs8999</p>
+            <p>Discount: 44%</p>
+        </div>
+        <div class="product-item" id="Product_29">
+            <img src="/imgs/W1.jpeg" class = "img" alt="Women">
+            <h2>Over coat</h2>
+            <p>Description: Party wear </p>
+            <p>Price: Rs2000</p>
+            <p>Discount: 10%</p>
+            
+        </div>
+        <div class="product-item" id="Product_30">
+            <img src="/imgs/W2.jpeg" class = "img" alt="Women">
+            <h2>Jeans</h2>
+            <p>Description: Denim</p>
+            <p>Price: Rs1500</p>
+            <p>Discount: 15%</p>
+            
+        </div>
+        <div class="product-item" id="Product_31">
+            <img src="/imgs/W3.jpeg" class = "img" alt="Women">
+            <h2>Combo</h2>
+            <p>Description: Formals </p>
+            <p>Price: Rs5000</p>
+            <p>Discount: 20%</p>
+            
+        </div>
+        <div class="product-item" id="Product_32">
+            <img src="/imgs/W4.jpeg" class = "img" alt="Women">
+            <h2>Shirt Jeans</h2>
+            <p>Description: Casual </p>
+            <p>Price: Rs2500</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_33">
+            <img src="/imgs/W5.jpeg" class = "img" alt="Women">
+            <h2>Crop top & Pant</h2>
+            <p>Description: Denim</p>
+            <p>Price: Rs2999</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+    
+        <div class="product-item" id="Product_34">
+            <img src="/imgs/W6.jpeg" class = "img" alt="Women">
+            <h2>T-shirt & Jeans</h2>
+            <p>Description: Casual </p>
+            <p>Price: Rs3000</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_35">
+            <img src="/imgs/W7.jpeg" class = "img" alt="Women">
+            <h2>Dress</h2>
+            <p>Description: Floral</p>
+            <p>Price: Rs850</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_36">
+            <img src="/imgs/W8.jpeg" class = "img" alt="Women">
+            <h2>Co-ord set</h2>
+            <p>Description: Vibrant</p>
+            <p>Price: Rs1599</p>
+            <p>Discount: 20%</p>
+            
+        </div>
+        <div class="product-item" id="Product_37">
+            <img src="/imgs/W9.jpeg" class = "img" alt="Women">
+            <h2>Lehenga</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs5999</p>
+            <p>Discount: 33%</p>
+            
+        </div>
+        <div class="product-item" id="Product_38">
+            <img src="/imgs/W10.jpeg" class = "img" alt="Women">
+            <h2>Combo 2</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs3500</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_39">
+            <img src="/imgs/W11.jpeg" class = "img" alt="Women">
+            <h2>Patiyala</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs999</p>
+            <p>Discount: 23%</p>
+            
+        </div>
+        <div class="product-item" id="Product_40">
+            <img src="/imgs/W12.jpeg" class = "img" alt="Women">
+            <h2>Sharara</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs2999</p>
+            <p>Discount: 55%</p>
+            
+        </div>
+        <div class="product-item" id="Product_41">
+            <img src="/imgs/W13.jpeg" class = "img" alt="Women">
+            <h2>Lehenga 2</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs9999</p>
+            <p>Discount: 20%</p>
+            
+        </div>
+        <div class="product-item" id="Product_42">
+            <img src="/imgs/W14.jpeg" class = "img" alt="Women">
+            <h2>Dress 2</h2>
+            <p>Description: Party wear</p>
+            <p>Price: Rs4599</p>
+            <p>Discount: 45%</p>
+            
+        </div>
+        <div class="product-item" id="Product_43">
+            <img src="/imgs/W15.jpeg" class = "img" alt="Women">
+            <h2>Gown</h2>
+            <p>Description: Party wear</p>
+            <p>Price: Rs3250</p>
+            <p>Discount: 22%</p>
+            
+        </div>
+        <div class="product-item" id="Product_44">
+            <img src="/imgs/W16.jpeg" class = "img" alt="Women">
+            <h2>Long skirt & Top</h2>
+            <p>Description: Party dress</p>
+            <p>Price: Rs1999</p>
+            <p>Discount: 25%</p>
+        </div>
+        <div class="product-item" id="Product_45">
+            <img src="/imgs/K1.jpeg" class = "img" alt="kids">
+            <h2>Frock</h2>
+            <p>Description: Party wear </p>
+            <p>Price: Rs2000</p>
+            <p>Discount: 10%</p>
+            
+        </div>
+        <div class="product-item" id="Product_46">
+            <img src="/imgs/K2.jpeg" class = "img" alt="kids">
+            <h2>Dress</h2>
+            <p>Description: Floral</p>
+            <p>Price: Rs1500</p>
+            <p>Discount: 15%</p>
+            
+        </div>
+        <div class="product-item" id="Product_47">
+            <img src="/imgs/K3.jpeg" class = "img" alt="kids">
+            <h2>T-shirt</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs500</p>
+            <p>Discount: 20%</p>
+            
+        </div>
+        <div class="product-item" id="Product_48">
+            <img src="/imgs/K4.jpeg" class = "img" alt="kids">
+            <h2>Skirt Dress</h2>
+            <p>Description: Casual </p>
+            <p>Price: Rs950</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_49">
+            <img src="/imgs/K5.jpeg" class = "img" alt="kids">
+            <h2>Jeans</h2>
+            <p>Description: Denim</p>
+            <p>Price: Rs1199</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+    
+        <div class="product-item" id="Product_50">
+            <img src="/imgs/K6.jpeg" class = "img" alt="kids">
+            <h2>T-shirt & Pant</h2>
+            <p>Description: Casual </p>
+            <p>Price: Rs1350</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_51">
+            <img src="/imgs/K7.jpeg" class = "img" alt="kids">
+            <h2>Jacket</h2>
+            <p>Description: Denim</p>
+            <p>Price: Rs350</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_52">
+            <img src="/imgs/K8.jpeg" class = "img" alt="kids">
+            <h2>Jeans & Jacket</h2>
+            <p>Description: Denim</p>
+            <p>Price: Rs1599</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_53">
+            <img src="/imgs/K9.jpeg" class = "img" alt="kids">
+            <h2>Set</h2>
+            <p>Description: Cotton</p>
+            <p>Price: Rs1350</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_54">
+            <img src="/imgs/K10.jpeg" class = "img" alt="kids">
+            <h2>Combo</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs3500</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_55">
+            <img src="/imgs/K11.jpeg" class = "img" alt="kids">
+            <h2>3-set</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs999</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_56">
+            <img src="/imgs/K12.jpeg" class = "img" alt="kids">
+            <h2>Sherwani</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs2999</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_57">
+            <img src="/imgs/K13.jpeg" class = "img" alt="kids">
+            <h2>Cord-set</h2>
+            <p>Description: Party Wear</p>
+            <p>Price: Rs1350</p>
+            <p>Discount: 20%</p>
+            
+        </div>
+        <div class="product-item" id="Product_58">
+            <img src="/imgs/K14.jpeg" class = "img" alt="kids">
+            <h2>Multicolour Jacket</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs1599</p>
+            <p>Discount: 15%</p>
+            
+        </div>
+        <div class="product-item" id="Product_59">
+            <img src="/imgs/K15.jpeg" class = "img" alt="kids">
+            <h2>Denim Jacket</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs350</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_60">
+            <img src="/imgs/K16.jpeg" class = "img" alt="kids">
+            <h2>Gown</h2>
+            <p>Description: Party dress</p>
+            <p>Price: Rs3000</p>
+            <p>Discount: 25%</p>
+        </div>
+        <div class="product-item" id="Product_61">
+            <img src="/imgs/H1.jpeg" class="img" alt="Homecare">
+            <h2>Floral White</h2>
+            <p>Description: Cotton </p>
+            <p>Price: Rs599</p>
+            <p>Discount: 10%</p>
+            
+        </div>
+        <div class="product-item" id="Product_62">
+            <img src="/imgs/H2.jpeg" class="img" alt="Homecare">
+            <h2>Floral white & pink</h2>
+            <p>Description: Cotton</p>
+            <p>Price: Rs1599</p>
+            <p>Discount: 15%</p>
+            
+        </div>
+        <div class="product-item" id="Product_63">
+            <img src="/imgs/H3.jpeg" class="img" alt="Homecare">
+            <h2>Geometric Blue</h2>
+            <p>Description: Cotton</p>
+            <p>Price: Rs599</p>
+            <p>Discount: 20%</p>
+            
+        </div>
+        <div class="product-item" id="Product_64">
+            <img src="/imgs/H4.jpeg" class="img" alt="Homecare">
+            <h2>White with Pink</h2>
+            <p>Description: Minimal Floral </p>
+            <p>Price: Rs999</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_65">
+            <img src="/imgs/H5.jpeg" class="img" alt="Homecare">
+            <h2>Geometric Multi</h2>
+            <p>Description: Cotton</p>
+            <p>Price: Rs499</p>
+            <p>Discount: 28%</p>
+            
+        </div>
+
+        <div class="product-item" id="Product_66">
+            <img src="/imgs/H6.jpeg" class="img" alt="Homecare">
+            <h2>Shutle Brown</h2>
+            <p>Description: Tera Cotton </p>
+            <p>Price: Rs1499</p>
+            <p>Discount: 45%</p>
+            
+        </div>
+        <div class="product-item" id="Product_67">
+            <img src="/imgs/H7.jpeg" class="img" alt="Homecare">
+            <h2>Monocromatic Peach</h2>
+            <p>Description: Silk</p>
+            <p>Price: Rs2999</p>
+            <p>Discount: 33%</p>
+            
+        </div>
+        <div class="product-item" id="Product_68">
+            <img src="/imgs/H8.jpeg" class="img" alt="Homecare">
+            <h2>Geometric mixed</h2>
+            <p>Description: Pure cotton</p>
+            <p>Price: Rs599</p>
+            <p>Discount: 22%</p>
+            
+        </div>
+        <div class="product-item" id="Product_69">
+            <img src="/imgs/H9.jpeg" class="img" alt="Homecare">
+            <h2>Floral Blue</h2>
+            <p>Description: Pure Cotton</p>
+            <p>Price: Rs599</p>
+            <p>Discount: 23%</p>
+            
+        </div>
+        <div class="product-item" id="Product_70">
+            <img src="/imgs/H10.jpeg" class="img" alt="Homecare">
+            <h2>Off-White</h2>
+            <p>Description: Cotton</p>
+            <p>Price: Rs699</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_71">
+            <img src="/imgs/H11.jpeg" class="img" alt="Homecare">
+            <h2>Ocean Blue</h2>
+            <p>Description: Casual</p>
+            <p>Price: Rs699</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_72">
+            <img src="/imgs/H12.jpeg" class="img" alt="Homecare">
+            <h2>Royal Blue</h2>
+            <p>Description: Volvet</p>
+            <p>Price: Rs999</p>
+            <p>Discount: 25%</p>
+            
+        </div>
+        <div class="product-item" id="Product_73">
+            <img src="/imgs/H13.jpeg" class="img" alt="Homecare">
+            <h2>Bright Pink</h2>
+            <p>Description: Pure Cotton</p>
+            <p>Price: Rs650</p>
+            <p>Discount: 20%</p>
+            
+        </div>
+        <div class="product-item" id="Product_74">
+            <img src="/imgs/H14.jpeg" class="img" alt="Homecare">
+            <h2>Floral Pink</h2>
+            <p>Description: Cotton</p>
+            <p>Price: Rs599</p>
+            <p>Discount: 15%</p>
+            
+        </div>
+        <div class="product-item" id="Product_75">
+            <img src="/imgs/H15.jpeg" class="img" alt="Homecare">
+            <h2>Geometric Lines</h2>
+            <p>Description: Cotton</p>
+            <p>Price: Rs750</p>
+            <p>Discount: 45%</p>
+            
+        </div>
+        <div class="product-item" id="Product_76">
+            <img src="/imgs/H16.jpeg" class="img" alt="Homecare">
+            <h2>Geometric White</h2>
+            <p>Description: Cotton</p>
+            <p>Price: Rs999</p>
+            <p>Discount: 44%</p>
+            
+        </div>
+        <button class="buyNow">BUY NOW</button>
+    </section>
+
+    <script>
+        let cartItems = []
+        // Retrieve cart items from local storage
+        if (JSON.parse(localStorage.getItem("cartItems")).length !== 0) {
+            const buyNow = document.querySelector('.buyNow');
+            buyNow.style.display = "inline";
+            cartItems = JSON.parse(localStorage.getItem("cartItems"));
+            if (cartItems) {
+                let productItems = document.querySelectorAll('.product-item');
+                for (let i of cartItems) {
+                    for (let j of productItems) {
+                        if ((j.getAttribute('id')) === i.name) {
+                            j.style.display = "flex";
+                            let r = document.createElement('span');
+                            r.innerText = `Quantity: ${i.qty}`;
+                            j.appendChild(r);
+                            let plusbtn = document.createElement('button');
+                            let minusbtn = document.createElement('button');
+                            plusbtn.innerText = "+";
+                            minusbtn.innerText = "-";
+                            plusbtn.classList.add('plus-btn');
+                            minusbtn.classList.add('minus-btn');
+                            j.appendChild(plusbtn);
+                            j.appendChild(minusbtn);
+                            minusbtn.addEventListener('click', () => {
+                                cartItems = JSON.parse(localStorage.getItem("cartItems"));
+                                for (let n of cartItems) {
+                                    if (n.name === i.name) {
+                                        i.qty = n.qty;
+                                        // r.innerText = `Quantity: ${n.qty}`;
+                                        break;
+                                    }
+                                }
+                                if (parseInt(i.qty) === 1) {
+                                    // cartItems = JSON.parse(localStorage.getItem("cartItems"));
+                                    // let newCartItems = [];
+                                    j.removeChild(r);
+                                    j.removeChild(plusbtn);
+                                    j.removeChild(minusbtn);
+                                    j.style.display = "none";
+                                    // console.log(cartItems.length);
+                                    localStorage.cartItems = JSON.stringify(newCartItems(cartItems, i));
+                                    location.reload();
+                                    // localStorage.cartItems = JSON.stringify(newCartItems);
+                                }
+                                else {
+                                    for (let n of cartItems) {
+                                        if (n.name === i.name) {
+                                            n.qty -= 1;
+                                            r.innerText = `Quantity: ${n.qty}`;
+                                            break;
+                                        }
+                                    }
+                                    localStorage.cartItems = JSON.stringify(cartItems);
+                                }
+                            });
+                            plusbtn.addEventListener('click', () => {
+                                cartItems = JSON.parse(localStorage.getItem("cartItems"))
+                                for (let n of cartItems) {
+                                    if (n.name === i.name) {
+                                        n.qty += 1;
+                                        r.innerText = `Quantity: ${n.qty}`;
+                                        // console.log(r.innerText);
+                                        break;
+                                    }
+                                } localStorage.cartItems = JSON.stringify(cartItems);
+                            });
+                            break;
+                        }
+                    }
+                }
+            } buyNow.addEventListener('click', (e) => {
+                let buyNow = [];
+                cartItems = JSON.parse(localStorage.getItem("cartItems"));
+                buyNow = cartItems;
+                localStorage.buyNow = JSON.stringify(buyNow);
+                localStorage.cartItems = JSON.stringify([]);
+                location.reload();
+            })
+        }
+        else {
+            // If cart is empty, display a message
+            document.querySelector('.buyNow').style.display = "inline";
+            let noItemMessage = document.createElement("img");
+            noItemMessage.src = "no-item-found-vector-flat-260nw-2085975523.jpg";
+            noItemMessage.alt = "No items found";
+            document.querySelector('section').appendChild(noItemMessage);
+            document.querySelector('.buyNow').style.display = "none";
+        }
+        function newCartItems(cartItems, product) {
+            let newCartItems = [];
+            for (let i = 0; i < cartItems.length; i++) {
+                if (cartItems[i].name !== product.name) {
+                    newCartItems.push(cartItems[i]);
+                }
+            }
+            // }console.log(newCartItems);
+            return newCartItems;
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy;2024 Rights are Reserved</p>
+    </footer>
+
+</body>
+
+</html>
